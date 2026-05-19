@@ -7,16 +7,16 @@
 
 template <typename T>
 class BST {
- public:
+public:
     struct Node {
         T value;
         int count;
-        Node* left;
-        Node* right;
-        Node(T val) : value(val), count(1), left(nullptr), right(nullptr) {}
+        Node *left;
+        Node *right;
+        explicit Node(T val) : value(val), count(1), left(nullptr), right(nullptr) {}
     };
 
- private:
+private:
     Node* root;
 
     Node* addNode(Node* node, T value) {
@@ -53,7 +53,7 @@ class BST {
         }
     }
 
- public:
+public:
     BST() : root(nullptr) {}
     ~BST() { clear(root); }
 
@@ -62,7 +62,8 @@ class BST {
     }
 
     int depth() const {
-        return getDepth(root);
+        if (!root) return 0;
+        return getDepth(root) - 2;
     }
 
     int search(T value) const {
