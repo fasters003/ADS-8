@@ -62,7 +62,6 @@ class BST {
     }
 
     int depth() const {
-        // Если дерево пустое - 0, если только корень - 1
         return getDepth(root);
     }
 
