@@ -11,7 +11,6 @@
 void makeTree(BST<std::string>& tree, const char* filename) {
     std::ifstream file(filename);
     if (!file) return;
-
     std::string word = "";
     char ch;
     while (file.get(ch)) {
@@ -41,12 +40,10 @@ void collect(BST<std::string>::Node* node,
 void printFreq(BST<std::string>& tree) {
     std::vector<std::pair<std::string, int>> freqData;
     collect(tree.getRoot(), &freqData);
-
     std::sort(freqData.begin(), freqData.end(), [](const auto& a, const auto& b) {
         if (a.second != b.second) return a.second > b.second;
         return a.first < b.first;
     });
-
     std::ofstream outFile("result/freq.txt");
     for (const auto& entry : freqData) {
         if (outFile.is_open()) {
